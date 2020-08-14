@@ -48,9 +48,8 @@ export default {
   components: {
     HelloWorld
   },
-
-  data: () => ({
-    //
-  })
+  created() {
+    this.$store.dispatch("getData");
+  }
 };
 </script>
