@@ -1,10 +1,15 @@
 <template>
   <v-container class="card-container d-flex flex-wrap justify-center">
-    <restaurant-card
-      v-for="restaurant in restaurants"
-      v-bind:key="restaurant.id"
-      v-bind:restaurant="restaurant"
-    />
+    <v-row>
+      <v-col
+        cols="12"
+        md="6"
+        v-for="restaurant in restaurants"
+        v-bind:key="restaurant.id"
+      >
+        <restaurant-card v-bind:restaurant="restaurant" />
+      </v-col>
+    </v-row>
   </v-container>
 </template>
 
