@@ -7,12 +7,12 @@
       <div class="hero-content d-flex flex-column align-center justify-center">
         <v-img
           alt="Vuetify Logo"
-          class="shrink mr-2"
+          class="shrink"
           src="../assets/logo2.png"
           transition="scale-transition"
           width="150"
         />
-        <h1 class="font-weight-bold mb-5 mt-5">
+        <h1 class="font-weight-bold my-5">
           Restaurantify
         </h1>
         <h2 class="font-weight-light">

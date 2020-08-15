@@ -3,31 +3,12 @@
     <v-img v-bind:src="thumbUrl" aspect-ratio="1" />
     <v-card-title>{{ restaurant.name }}</v-card-title>
     <v-card-text>
-      <v-row align="center" class="mx-0">
-        <v-rating
-          :value="ratingValue"
-          color="amber"
-          dense
-          half-increments
-          readonly
-          size="18"
-        ></v-rating>
-        <div class="ml-4">
-          <v-card-text>
-            {{ restaurant.user_rating.aggregate_rating }} ({{
-              restaurant.all_reviews_count
-            }})
-          </v-card-text>
-        </div>
-        <v-chip dark v-bind:style="bgColor">
-          {{ restaurant.user_rating.rating_text }}
-        </v-chip>
-      </v-row>
+      <rating v-bind:user_rating="restaurant.user_rating" />
       <v-card-text class="subtitle-1 text-center cusines-list">
         {{ restaurant.cuisines }}
       </v-card-text>
     </v-card-text>
-    <v-divider class="mx-4"></v-divider>
+    <v-divider class="mx-2"></v-divider>
     <v-card-actions>
       <v-btn block color="#41B883" dark v-bind:to="path">
         Read more
@@ -37,8 +18,12 @@
 </template>
 
 <script>
+import Rating from "../Rating";
 export default {
   name: "RestaurantCard",
+  components: {
+    Rating
+  },
   props: {
     restaurant: {
       id: String,
@@ -58,14 +43,6 @@ export default {
         "https://source.unsplash.com/collection/251966/500x500"
       );
     },
-    ratingValue: function() {
-      return parseInt(this.restaurant.user_rating.aggregate_rating, 10);
-    },
-    bgColor: function() {
-      return (
-        "background-color: #" + this.restaurant.user_rating.rating_color + ";"
-      );
-    },
     path: function() {
       return `/restaurant/${this.restaurant.id}`;
     }
@@ -75,6 +52,6 @@ export default {
 
 <style lang="scss" scoped>
 .cusines-list {
-  height: 100px;
+  height: 90px;
 }
 </style>
