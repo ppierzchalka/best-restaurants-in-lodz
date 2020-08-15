@@ -1,26 +1,23 @@
 <template>
-  <v-container>
-    <ul>
-      <li v-for="restaurant in getRestaurants" v-bind:key="restaurant.id">
-        {{ restaurant.name }}
-      </li>
-    </ul>
+  <v-container class="card-container d-flex flex-wrap justify-center">
+    <restaurant-card
+      v-for="restaurant in restaurants"
+      v-bind:key="restaurant.id"
+      v-bind:restaurant="restaurant"
+    />
   </v-container>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
-
+import RestaurantCard from "./RestaurantCard";
 export default {
   name: "RestaurantList",
-  computed: {
-    ...mapGetters(["getRestaurants", "getStatus"])
+  components: {
+    RestaurantCard
   },
-  watch: {
-    getStatus: function(newStatus) {
-      if (newStatus === "Success") {
-        console.log(this.$store.getters.getRestaurantData("16533294"));
-      }
+  computed: {
+    restaurants: function() {
+      return this.$store.getters.getRestaurants;
     }
   }
 };
