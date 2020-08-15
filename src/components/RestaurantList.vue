@@ -13,7 +13,7 @@
 import { mapGetters } from "vuex";
 
 export default {
-  name: "HelloWorld",
+  name: "RestaurantList",
   computed: {
     ...mapGetters(["getRestaurants", "getStatus"])
   },
