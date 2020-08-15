@@ -66,20 +66,6 @@ export default {
       },
       highlights: Array
     }
-  },
-  computed: {
-    ratingValue: function() {
-      return parseInt(this.restaurantData.user_rating.aggregate_rating, 10);
-    },
-    bgColor: function() {
-      return (
-        "background-color: #" +
-        this.restaurantData.user_rating.rating_color +
-        ";"
-      );
-    }
   }
 };
 </script>
-
-<style lang="scss" scoped></style>

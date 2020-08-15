@@ -15,13 +15,7 @@
         />
       </v-row>
       <div>
-        <v-btn
-          class="back-button"
-          color="#42b983"
-          dark
-          v-on:click="$router.go(-1)"
-          >Back</v-btn
-        >
+        <v-btn color="#42b983" dark to="/">Home</v-btn>
       </div>
     </v-container>
   </div>
@@ -51,10 +45,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss" scoped>
-.back-button {
-  display: block;
-  margin: 0 auto;
-}
-</style>

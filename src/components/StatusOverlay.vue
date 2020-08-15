@@ -3,7 +3,7 @@
     class="loader-container d-flex flex-column align-center justify-center"
   >
     <v-card
-      class="mx-auto d-flex flex-column align-center justify-center pt-7 pb-7 pl-7 pr-7"
+      class="mx-auto d-flex flex-column align-center justify-center px-7 py-7"
     >
       <v-progress-circular
         v-if="status === 'Loading'"

@@ -1,7 +1,7 @@
 <template>
   <v-img v-bind:src="src" class="banner" dark>
     <div class="banner-content d-flex flex-column align-center justify-center">
-      <h1 class="font-weight-bold mb-5 mt-5">
+      <h1 class="font-weight-bold">
         {{ name }}
       </h1>
     </div>
