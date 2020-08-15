@@ -6,7 +6,7 @@
       <v-card-text>
         <v-row align="center" class="mx-0">
           <v-rating
-            :value="ratingData.aggreagateRating"
+            :value="restaurant.rating.aggreagateRating"
             color="amber"
             dense
             half-increments
@@ -14,7 +14,9 @@
             size="14"
           ></v-rating>
           <div class="grey--text ml-4">
-            {{ ratingData.aggreagateRating }} ({{ ratingData.allReviewsCount }})
+            {{ restaurant.rating.aggreagateRating }} ({{
+              restaurant.rating.allReviewsCount
+            }})
           </div>
         </v-row>
         <div class="my-4 subtitle-1">
@@ -64,20 +66,6 @@ export default {
         this.restaurant.thumb ||
         "https://source.unsplash.com/collection/251966/500x250"
       );
-    },
-    ratingData: function() {
-      const {
-        aggreagateRating,
-        ratingColor,
-        ratingText,
-        allReviewsCount
-      } = this.restaurant.rating;
-      return {
-        aggreagateRating: parseInt(aggreagateRating, 10),
-        ratingText,
-        ratingColor,
-        allReviewsCount
-      };
     }
   }
 };
