@@ -1,7 +1,11 @@
 <template>
   <v-container>
     <p>{{ JSON.stringify(getStatus) }}</p>
-    <p>{{ JSON.stringify(getRestaurants) }}</p>
+    <ul>
+      <li v-for="restaurant in getRestaurants" v-bind:key="restaurant.id">
+        {{ restaurant.name }}
+      </li>
+    </ul>
   </v-container>
 </template>
 

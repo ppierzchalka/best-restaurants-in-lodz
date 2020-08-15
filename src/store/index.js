@@ -1,43 +1,26 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import { zomatoApi } from "./api.js";
+import { getData } from "./actions";
+import { setLoadingState, setRestaurantsData } from "./mutations";
+import { getRestaurantData, getRestaurants, getStatus } from "./getters";
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    data: null,
+    data: [],
     status: "Loading"
   },
   actions: {
-    getData({ commit }) {
-      zomatoApi
-        .get()
-        .then(response => commit("setRestaurantsData", response))
-        .catch(error => {
-          commit("setLoadingState", "Error");
-          console.error(error);
-        });
-    }
+    getData
   },
   mutations: {
-    setRestaurantsData(state, response) {
-      if (response.status === 200) {
-        state.data = response.data.restaurants;
-        state.status = "Success";
-      } else {
-        state.status = "Error";
-        console.error("Unknown error");
-      }
-    },
-    setLoadingState(state, status) {
-      state.status = status;
-    }
+    setRestaurantsData,
+    setLoadingState
   },
   getters: {
-    getRestaurants: state => state.data,
-    getRestaurantData: state => id =>
-      state.data.find(item => item.restaurant.id === id),
-    getStatus: state => state.status
+    getRestaurants,
+    getRestaurantData,
+    getStatus
   }
 });
