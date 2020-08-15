@@ -3,7 +3,7 @@
     <v-row>
       <v-col
         cols="12"
-        md="6"
+        md="4"
         v-for="restaurant in restaurants"
         v-bind:key="restaurant.id"
       >

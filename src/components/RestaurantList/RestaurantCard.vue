@@ -1,6 +1,6 @@
 <template>
-  <v-card class="mx-auto" width="100%">
-    <v-img height="250" v-bind:src="thumbUrl"></v-img>
+  <v-card>
+    <v-img v-bind:src="thumbUrl" aspect-ratio="1" />
     <v-card-title>{{ restaurant.name }}</v-card-title>
     <v-card-text>
       <v-row align="center" class="mx-0">
@@ -10,29 +10,26 @@
           dense
           half-increments
           readonly
-          size="14"
+          size="18"
         ></v-rating>
         <div class="ml-4">
           <v-card-text>
-            {{ restaurant.rating.aggreagateRating }} ({{
-              restaurant.rating.allReviewsCount
+            {{ restaurant.user_rating.aggregate_rating }} ({{
+              restaurant.all_reviews_count
             }})
           </v-card-text>
         </div>
-        <v-chip
-          dark
-          v-bind:style="'background: #' + restaurant.rating.ratingColor + ';'"
-        >
-          {{ restaurant.rating.ratingText }}
+        <v-chip dark v-bind:style="bgColor">
+          {{ restaurant.user_rating.rating_text }}
         </v-chip>
       </v-row>
-      <v-card-text class="subtitle-1">
+      <v-card-text class="subtitle-1 text-center cusines-list">
         {{ restaurant.cuisines }}
       </v-card-text>
     </v-card-text>
     <v-divider class="mx-4"></v-divider>
     <v-card-actions>
-      <v-btn color="#41B883" dark>
+      <v-btn block color="#41B883" dark v-bind:to="path">
         Read more
       </v-btn>
     </v-card-actions>
@@ -46,13 +43,11 @@ export default {
     restaurant: {
       id: String,
       name: String,
-      location: String,
-      averageCost: String,
-      rating: {
-        aggreagateRating: String,
-        ratingText: String,
-        ratingColor: String,
-        allReviewsCount: String
+      all_reviews_count: String,
+      user_rating: {
+        aggregate_rating: String,
+        rating_text: String,
+        rating_color: String
       }
     }
   },
@@ -60,12 +55,26 @@ export default {
     thumbUrl: function() {
       return (
         this.restaurant.thumb ||
-        "https://source.unsplash.com/collection/251966/500x250"
+        "https://source.unsplash.com/collection/251966/500x500"
       );
     },
     ratingValue: function() {
-      return parseInt(this.restaurant.rating.aggreagateRating, 10);
+      return parseInt(this.restaurant.user_rating.aggregate_rating, 10);
+    },
+    bgColor: function() {
+      return (
+        "background-color: #" + this.restaurant.user_rating.rating_color + ";"
+      );
+    },
+    path: function() {
+      return `/restaurant/${this.restaurant.id}`;
     }
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.cusines-list {
+  height: 100px;
+}
+</style>
