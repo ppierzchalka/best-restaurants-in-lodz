@@ -1,13 +1,16 @@
 <template>
   <div class="hero">
-    <v-parallax src="https://source.unsplash.com/collection/251966/1600x900">
+    <v-parallax
+      src="https://source.unsplash.com/collection/251966/1600x900"
+      height="350"
+    >
       <div class="hero-content d-flex flex-column align-center justify-center">
         <v-img
           alt="Vuetify Logo"
           class="shrink mr-2"
           src="../assets/logo2.png"
           transition="scale-transition"
-          width="200"
+          width="150"
         />
         <h1 class="font-weight-bold mb-5 mt-5">
           Restaurantify

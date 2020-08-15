@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import Hero from "@/components/Hero.vue";
-import RestaurantList from "@/components/RestaurantList/RestaurantList.vue";
+import Hero from "../components/Hero.vue";
+import RestaurantList from "../components/RestaurantList/RestaurantList.vue";
 
 export default {
   name: "Home",

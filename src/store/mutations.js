@@ -1,6 +1,7 @@
+import { transformResponse } from "./utils";
 export function setRestaurantsData(state, response) {
   if (response.status === 200) {
-    state.data = response.data.restaurants;
+    state.data = transformResponse(response.data);
     state.status = "Success";
   } else {
     state.status = "Error";

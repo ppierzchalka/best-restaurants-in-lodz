@@ -1,6 +1,7 @@
 import { zomatoApi } from "./api.js";
 
 export function getData({ commit }) {
+  commit("setLoadingState", "Loading");
   zomatoApi
     .get()
     .then(response => commit("setRestaurantsData", response))

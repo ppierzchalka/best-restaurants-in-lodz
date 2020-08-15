@@ -1,6 +1,6 @@
-export const getRestaurants = state => state.data.map(obj => obj.restaurant);
+export const getRestaurants = state => state.data;
 
 export const getRestaurantData = state => id =>
-  state.data.find(item => item.restaurant.id === id).restaurant ?? null;
+  state.data.find(restaurant => restaurant.id === id);
 
 export const getStatus = state => state.status;
